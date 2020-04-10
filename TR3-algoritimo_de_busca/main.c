@@ -19,24 +19,24 @@ int binario(int *vetor, int inicio, int fim, int numero) {
     return -1;
 }
 
-void algoritimo_binario(int numero, int *vetor) {
 
-    int tamanho_array = 50;
+void algoritimo_binario(int numero, int *vetor, int length) {
+
     int resultado;
 
     if(numero < vetor[0]) {
-        printf("Não existe");
+        printf("O número não foi encontrado no array\n");
         exit(0);
     }
-    if(numero > vetor[tamanho_array-1]){
-        printf("Não existe");
+    if(numero > vetor[length-1]){
+        printf("O número não foi encontrado no array\n");
         exit(0);
     }
 
-    resultado = binario(vetor, 0, tamanho_array-1, numero);
+    resultado = binario(vetor, 0, length-1, numero);
 
     if(resultado == -1) {
-        printf("O valor não foi encontrado\n");
+        printf("O número não foi encontrado no array\n");
     } else {
         printf("O valor %i resultado foi encontrado na posicao %i\n", numero, resultado);
     }
@@ -46,19 +46,21 @@ int main() {
 
     int vetor[50];
     int numero;
-    
+    int length;
+
+    length = sizeof(vetor) / sizeof(int);
 
     srand(time(NULL));
-    for(int i = 0; i < 50; i++) {
+    for(int i = 0; i < length; i++) {
         vetor[i] = rand() % 1000;
     }
 
-    chama_quick_sort(vetor, 50);
+    chama_quick_sort(vetor, length);
 
     printf("Digite o número da pesquisa: ");
     scanf("%i", &numero);
 
-    algoritimo_binario(numero, vetor);
+    algoritimo_binario(numero, vetor, length);
 
     return 0;
 }
