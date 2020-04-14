@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "ordenar.c"
 
+/*
 int binario(int *vetor, int inicio, int fim, int numero) {
     int meio;
 
@@ -17,6 +18,24 @@ int binario(int *vetor, int inicio, int fim, int numero) {
     }
 
     return -1;
+}
+*/
+
+int binario(int *vetor, int inicio, int fim, int numero) {
+    int meio = (inicio + fim) / 2;
+
+    if(numero == vetor[meio]) {
+        return meio;
+    } else if(numero > vetor[meio]) {
+        inicio = meio + 1;
+        binario(vetor, inicio, fim, numero);
+    } else if(numero < vetor[meio]) {
+        fim = meio - 1;
+        binario(vetor, inicio, fim, numero);
+    }
+    else {
+        return - 1;
+    }
 }
 
 
@@ -52,7 +71,7 @@ int main() {
 
     srand(time(NULL));
     for(int i = 0; i < length; i++) {
-        vetor[i] = rand() % 1000;
+        vetor[i] = rand() % 100;
     }
 
     chama_quick_sort(vetor, length);
