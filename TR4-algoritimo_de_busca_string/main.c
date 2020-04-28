@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 #define ASCII 256
 #define NUMBER_PRIME 3
 
@@ -8,15 +9,25 @@ char str[1000000];
 
 void hash(char *word, char *file, int hash_word) {
 
-    int hash_file;
+    int hash_file = 0;
     int i = 0;
 
-    for(hash_file = 0; hash_file < hash_word; i++) {
-        hash_file += file[i];
+    while(hash_file != -1) {
+
+        hash_file = pow(ASCII, hash_file) + word[i];
+
         if(hash_file == hash_word) {
             printf("Ok");
+            exit(0);
         }
+
+        if(hash_file > hash_word) {
+            hash_file = 0;
+        }
+
+        i++;
     }
+    
 }
 
 void rabin_karp(char *word, char *file) {
@@ -26,7 +37,7 @@ void rabin_karp(char *word, char *file) {
     int hash_word = 0;
 
     for(int i = 0; i < word_length; i++) {
-        hash_word += word[i];
+        hash_word = pow(ASCII, hash_word) + word[i];
     }
 
     hash(word, file, hash_word);
