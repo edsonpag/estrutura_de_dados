@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+char str[1000000];
+
+
 int naive(char *word, char *file) {
     const int word_length = strlen(word) - 1; // -1 para tirar o caractere do enter
     const int file_length = strlen(file);
@@ -22,36 +25,28 @@ int naive(char *word, char *file) {
     return 0;
 }
 
-char * read_file() {
-    //char *str = malloc(100 * sizeof(char));
+void read_file() {
     char auxiliar[100];
     
-
     FILE *file;
     file = fopen("arquivo.txt", "r");
     
-    while(feof(file) == 0) {
-        fgets(auxiliar, 100, file) != NULL;
-        //strcat(str, auxiliar);
+    while(fgets(auxiliar, 100, file) != NULL) {
+        strcat(str, auxiliar);
     }
-
-    return auxiliar;
 }
 
 int main() {
     const int word_length = 50; 
     char word[word_length];
-    char *file;
     int verify;
 
-    file = read_file();
-
-    printf("%c", file[0]);
+    read_file();
 
     printf("Digite uma frase para pesquisa:\n");
     fgets(word, word_length, stdin);
     
-    verify = naive(word, file);
+    verify = naive(word, str);
 
     if(verify == 1) {
         printf("Encontramos a palavra/frase: %s\n", word);
