@@ -1,8 +1,36 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#define ASCII 256
+#define NUMBER_PRIME 3
 
 char str[1000000];
+
+void hash(char *word, char *file, int hash_word) {
+
+    int hash_file;
+    int i = 0;
+
+    for(hash_file = 0; hash_file < hash_word; i++) {
+        hash_file += file[i];
+        if(hash_file == hash_word) {
+            printf("Ok");
+        }
+    }
+}
+
+void rabin_karp(char *word, char *file) {
+    const int word_length = strlen(word) - 1;
+    //const int file_length = strlen(file);
+
+    int hash_word = 0;
+
+    for(int i = 0; i < word_length; i++) {
+        hash_word += word[i];
+    }
+
+    hash(word, file, hash_word);
+}
 
 
 int naive(char *word, char *file) {
@@ -43,9 +71,11 @@ int main() {
 
     read_file();
 
+
     printf("Digite uma frase para pesquisa:\n");
     fgets(word, word_length, stdin);
     
+    /*
     verify = naive(word, str);
 
     if(verify == 1) {
@@ -53,4 +83,7 @@ int main() {
     } else {
         printf("Não encontramos a palavra\n");
     }
+    */
+
+    rabin_karp(word, str);
 }
