@@ -1,3 +1,6 @@
+void addData(int data);
+void show();
+
 struct Node {
     struct Node *prev;
     struct Node *next;
@@ -6,6 +9,17 @@ struct Node {
 };
 
 struct Node *head;
+
+void show() {
+    struct Node *aux, *temp;
+    //aux = (struct Node *) malloc(sizeof(struct Node));
+    int i = 0;
+    
+    for(temp = head; temp != NULL; temp = temp->next) {
+        printf("Valor indice %i = %i\n", i, temp->data);
+        i++;
+    }
+}
 
 void addData(int data) {
     struct Node *aux;
@@ -23,4 +37,5 @@ void addData(int data) {
         aux->next = head;
         head = aux;
     }
+
 }
