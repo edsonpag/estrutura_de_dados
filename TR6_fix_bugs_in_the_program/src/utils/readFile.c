@@ -12,7 +12,7 @@ void readFile(List *student_list) {
 		exit (1);
 	}
 
-	createList (student_list);
+	*student_list = NULL;
 
 	while(!feof(file)) {
 		fscanf(file, "%d %s %f\n", &student.id, student.name, &student.gpa);

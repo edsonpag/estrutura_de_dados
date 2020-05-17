@@ -5,7 +5,6 @@
 #include "./structs/Student.c"
 #include "./structs/Node.c"
 
-#include "./utils/createList.c"
 #include "./utils/insertList.c"
 #include "./utils/readFile.c"
 
@@ -20,9 +19,6 @@ Student *search_list (List student_list, int id) {
 	else
 		return NULL;
 }
-
-
-
 
 int main () {
 	List student_list;

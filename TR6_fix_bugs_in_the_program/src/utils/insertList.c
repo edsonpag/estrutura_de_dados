@@ -1,10 +1,11 @@
-void insertList (List *L, Student k);
+void insertList (List *student_list, Student student);
 
-void insertList (List *L, Student k) {
-	Node *p;
-	p = (Node *) malloc (sizeof (Node));
-	p->current = k;
-	p->next = *L;
+void insertList (List *student_list, Student student) {
+	Node *aux;
 
-	*L = p;
+	aux = (Node *) malloc (sizeof (Node));
+	aux->current = student;
+	aux->next = *student_list;
+
+	*student_list = aux;
 }
