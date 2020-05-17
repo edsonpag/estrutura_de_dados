@@ -1,19 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
 #include "./structs/Student.c"
 #include "./structs/Node.c"
 
-
-
-void insert_list (List *L, Student k) {
-	Node *p;
-	p = (Node *) malloc (sizeof (Node));
-	p->current = k;
-	p->next = *L;
-
-	*L = p;
-}
+#include "./utils/createList.c"
+#include "./utils/insertList.c"
+#include "./utils/readFile.c"
 
 
 Student *search_list (List student_list, int id) {
@@ -27,32 +21,16 @@ Student *search_list (List student_list, int id) {
 		return NULL;
 }
 
-void create_list (List *L) {
-	*L = NULL;
-}
+
 
 
 int main () {
 	List student_list;
-	Student student, *found_student;
+	Student *found_student;
 	int	id;
-	FILE *file;
 
 
-	file = fopen ("../archives/List.txt", "r");
-	if (!file) {
-		perror ("List");
-		exit (1);
-	}
-
-	create_list (&student_list);
-
-	while(!feof(file)) {
-		fscanf(file, "%d %s %f\n", &student.id, student.name, &student.gpa);
-		insert_list(&student_list, student);
-	}	
-
-	fclose (file);
+	readFile(&student_list);
 
 	while(id != -1) {
 		printf ("Enter student ID, -1 to finish: ");
