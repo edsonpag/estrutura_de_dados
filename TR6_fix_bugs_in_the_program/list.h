@@ -10,7 +10,6 @@ void findById();
 
 
 
-
 void insert_list (List *student_list, Student student) {
 	Node *aux;
 
@@ -80,4 +79,6 @@ void findById() {
 
 		!selected_student ? printf("Estudante não encontrado\n") : printf("%d\t%s\t%0.2f\n", selected_student->id, selected_student->name, selected_student->gpa);
 	}
+
+	menu_start();
 }

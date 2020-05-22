@@ -2,10 +2,18 @@
 #include <stdlib.h>
 #include <string.h>
 
+void menu_start();
+
 #include "structs.h"
 #include "list.h"
 
 int main() {
+    menu_start();
+
+    return 0;
+}
+
+void menu_start() {
     int option = 0;
 
     printf("------------------------MENU DO SISTEMA DE ALUNOS------------------------\n\n");
@@ -23,7 +31,4 @@ int main() {
             printf("Saindo...\n");
             break;
     }
-
-
-    return 0;
 }
