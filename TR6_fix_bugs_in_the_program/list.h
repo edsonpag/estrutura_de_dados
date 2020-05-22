@@ -2,24 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 
-
-typedef struct _student {
-    int id;
-	char name[100];
-	float gpa;
-} Student;
-
-typedef struct _node {
-	Student student;
-	struct _node *next;
-} Node, *List;
-
-
 void insert_list (List *student_list, Student student);
 Student *search_list (List student_list, int id);
 void create_list (List *student_list);
 List read_file();
 void findById();
+
+
+
 
 void insert_list (List *student_list, Student student) {
 	Node *aux;
@@ -36,7 +26,7 @@ Student *search_list (List student_list, int id) {
 	Node *aux;
 
 	for (aux = student_list; aux && aux->student.id != id; aux=aux->next);
-
+	
 	if (aux) {
 		return &aux->student;
 	}
@@ -83,23 +73,11 @@ void findById() {
 	List student_list = read_file();
 
 	while(id != -1) {
-		printf ("Digite o ID do estudante, -1 para sair: ");
+		printf ("Digite o ID do estudante, -1 para voltar ao menu: ");
 		scanf ("%d", &id);
 
 		selected_student = search_list (student_list, id);
 
-		if (!selected_student) {
-			printf ("ID #%d not found!\n", id);
-		}
-
-		else {
-			printf ("%d\t%s\t%0.2f\n", selected_student->id, selected_student->name, selected_student->gpa);
-		}
+		!selected_student ? printf("Estudante não encontrado\n") : printf("%d\t%s\t%0.2f\n", selected_student->id, selected_student->name, selected_student->gpa);
 	}
-}
-
-int main () {
-	findById();
-
-	return 0;
 }
