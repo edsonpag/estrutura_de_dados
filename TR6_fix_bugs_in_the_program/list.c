@@ -2,8 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+
 typedef struct _student {
-	int id;
+    int id;
 	char name[100];
 	float gpa;
 } Student;
@@ -12,6 +13,13 @@ typedef struct _node {
 	Student student;
 	struct _node *next;
 } Node, *List;
+
+
+void insert_list (List *student_list, Student student);
+Student *search_list (List student_list, int id);
+void create_list (List *student_list);
+List read_file();
+void findById();
 
 void insert_list (List *student_list, Student student) {
 	Node *aux;
@@ -42,12 +50,13 @@ void create_list (List *student_list) {
 	*student_list = NULL;
 }
 
-int main () {
+List read_file() {
 	List student_list;
-	Student	student, *selected_student;
-	int	id = 0;
+	Student	student;
+	
 	FILE *file;
 
+	printf("Lendo o arquivo...\n");
 	file = fopen ("./file/List.txt", "r");
 
 	if (!file) {
@@ -64,8 +73,17 @@ int main () {
 
 	fclose (file);
 
+	return student_list;
+}
+
+void findById() {
+	Student *selected_student;
+	int id = 0;
+
+	List student_list = read_file();
+
 	while(id != -1) {
-		printf ("Enter student ID, -1 to finish: ");
+		printf ("Digite o ID do estudante, -1 para sair: ");
 		scanf ("%d", &id);
 
 		selected_student = search_list (student_list, id);
@@ -78,6 +96,10 @@ int main () {
 			printf ("%d\t%s\t%0.2f\n", selected_student->id, selected_student->name, selected_student->gpa);
 		}
 	}
+}
+
+int main () {
+	findById();
 
 	return 0;
 }
