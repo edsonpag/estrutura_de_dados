@@ -14,11 +14,17 @@ void insert_list (List *student_list, Student student) {
 	Node *aux;
 
 	aux = (Node *) malloc (sizeof (Node));
-
 	aux->student = student;
-	aux->next = *student_list;
 
-	*student_list = aux;
+	if(*student_list == NULL) {
+		*student_list = aux;
+	} else {
+		(*student_list)->prev = aux;
+		aux->next = *student_list;
+
+		*student_list = aux;
+	}
+
 }
 
 Student *search_list (List student_list, int id) {

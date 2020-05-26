@@ -7,4 +7,5 @@ typedef struct _student {
 typedef struct _node {
 	Student student;
 	struct _node *next;
+	struct _node *prev;
 } Node, *List;
