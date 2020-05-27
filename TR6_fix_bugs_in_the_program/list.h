@@ -7,6 +7,8 @@ Student *search_list (List student_list, int id);
 void create_list (List *student_list);
 List read_file();
 void findById();
+void printInDescendingOrder();
+void printInAscendingOrder();
 
 
 
@@ -24,7 +26,6 @@ void insert_list (List *student_list, Student student) {
 
 		*student_list = aux;
 	}
-
 }
 
 Student *search_list (List student_list, int id) {
@@ -85,6 +86,53 @@ void findById() {
 
 		!selected_student ? printf("Estudante não encontrado\n") : printf("%d\t%s\t%0.2f\n", selected_student->id, selected_student->name, selected_student->gpa);
 	}
+
+	menu_start();
+}
+
+void printInDescendingOrder() {
+	List student_list = read_file();
+	Node *aux;
+	
+	aux = (Node *) malloc(sizeof(Node));
+	*aux = *student_list;
+
+	while(aux) {
+		printf("ID: %i\tName: %s\tGPA: %.2f\n", aux->student.id, aux->student.name, aux->student.gpa);
+
+		if(aux->next == NULL) {
+			break;
+		}
+		*aux = *aux->next;
+	}
+
+	free(aux);
+
+	menu_start();
+}
+
+void printInAscendingOrder() {
+	List student_list = read_file();
+	Node *tail;
+	
+	tail = (Node *) malloc(sizeof(Node));
+	*tail = *student_list;
+
+	while(tail->next != NULL) {
+		*tail = *tail->next;
+	}
+
+	while(tail) {
+		printf("ID: %i\tName: %s\tGPA: %.2f\n", tail->student.id, tail->student.name, tail->student.gpa);
+		
+		if(tail->prev == NULL) {
+			break;
+		}
+
+		*tail = *tail->prev;
+	}
+
+	free(tail);
 
 	menu_start();
 }

@@ -18,6 +18,8 @@ void menu_start() {
 
     printf("------------------------MENU DO SISTEMA DE ALUNOS------------------------\n\n");
     printf("Digite 1 para encontrar um aluno pelo ID\n");
+    printf("Digite 2 para listar de ordem decrescente\n");
+    printf("Digite 3 para listar de ordem crescente\n");
     printf("Digite -1 para sair do sistema\n");
 
     scanf("%i", &option);
@@ -25,6 +27,14 @@ void menu_start() {
     switch(option) {
         case 1:
             findById();
+            break;
+
+        case 2:
+            printInDescendingOrder();
+            break;
+
+        case 3:
+            printInAscendingOrder();
             break;
 
         default:
