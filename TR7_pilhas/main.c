@@ -11,11 +11,11 @@ int main() {
     struct Stack *stack;
     stack = new_stack();
 
-    stack->data = 5;
+    push(stack, 52);
+    push(stack, 8);
+    push(stack, 12);
 
-    printf("%i\n", stack->data);
-
-
+    printf("%i: %i: %i\n", stack->data, stack->next->data, stack->next->next->data);
 
     return 0;
 }
