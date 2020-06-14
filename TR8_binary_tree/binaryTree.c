@@ -64,10 +64,32 @@ int search(struct Tree **tree, int data) {
     
 }
 
+void total(struct Tree **tree, int *results) {
+    
+    if(*tree == NULL) {
+        return;
+    } else {
+
+        *results += (*tree)->data;
+
+        total(&(*tree)->left, results);
+        total(&(*tree)->rigth, results);
+    }
+
+}
+
+void numberOfNodes(struct Tree **tree) {
+
+}
+
 int main() {
     struct Tree *tree;
     tree = NULL;
 
+    int *results;
+    results = (int *) malloc(sizeof(int));
+    *results = 0;
+    
 
     insert(&tree, 10);
     insert(&tree, 5);
@@ -75,9 +97,15 @@ int main() {
     insert(&tree, 15);
     insert(&tree, 30);
     insert(&tree, 25);
+    insert(&tree, 2);
 
-    int valor_encontrado = search(&tree, 15);
 
+    //int valor_encontrado = search(&tree, 15);
+    
+    /*
+    total(&tree, results);
+    printf("%i\n", *results);
+    */
 
     /*
     printf("%i\n", tree->data);
