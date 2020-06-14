@@ -78,8 +78,14 @@ void total(struct Tree **tree, int *results) {
 
 }
 
-void numberOfNodes(struct Tree **tree) {
-
+void numberOfNodes(struct Tree **tree, int *nodes) {
+    if(*tree == NULL) {
+        return;
+    } else {
+        *nodes += 1;
+        numberOfNodes(&(*tree)->left, nodes);
+        numberOfNodes(&(*tree)->rigth, nodes);
+    }
 }
 
 int main() {
@@ -89,6 +95,10 @@ int main() {
     int *results;
     results = (int *) malloc(sizeof(int));
     *results = 0;
+
+    int *nodes;
+    nodes = (int *) malloc(sizeof(int));
+    *nodes = 0;
     
 
     insert(&tree, 10);
@@ -100,12 +110,26 @@ int main() {
     insert(&tree, 2);
 
 
-    //int valor_encontrado = search(&tree, 15);
+
+
+    /* 
+    -------  PESQUISA ------
+
+    int valor_encontrado = search(&tree, 15);
+
+    */
+
+
+
     
     /*
+    -------  SOMA TOTAL ------
+
     total(&tree, results);
     printf("%i\n", *results);
     */
+
+
 
     /*
     printf("%i\n", tree->data);
@@ -116,6 +140,14 @@ int main() {
     printf("%i\n", tree->rigth->rigth->left->data);
     */
 
+
+
+    /*
+    -------  NUMERO DE NÓS ------
+
+    numberOfNodes(&tree, nodes);
+    printf("%i\n", *nodes);
+    */
 
     return 0;
 }
