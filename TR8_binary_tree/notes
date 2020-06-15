@@ -1,0 +1,50 @@
+insert(&tree, 10);
+insert(&tree, 5);
+insert(&tree, 3);
+insert(&tree, 15);
+insert(&tree, 30);
+insert(&tree, 25);
+insert(&tree, 2);
+
+
+
+-------  PESQUISA ------
+
+int valor_encontrado = search(&tree, 15);
+
+
+
+
+-------  SOMA TOTAL ------
+
+int *results;
+results = (int *) malloc(sizeof(int));
+*results = 0;
+
+total(&tree, results);
+printf("%i\n", *results);
+
+
+
+-------  NUMERO DE NÓS DE UMA ÁRVORE BINÁRIA ------
+
+int *nodes;
+nodes = (int *) malloc(sizeof(int));
+*nodes = 0;
+
+numberOfNodes(&tree, nodes);
+printf("%i\n", *nodes);
+
+
+
+
+------- OUTPUTS ------
+
+printf("%i\n", tree->data);
+printf("%i\n", tree->left->data);
+printf("%i\n", tree->left->left->data);
+printf("%i\n", tree->rigth->data);
+printf("%i\n", tree->rigth->rigth->data);
+printf("%i\n", tree->rigth->rigth->left->data);
+
+    

@@ -1,8 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "binaryTree.h"
-
-
 struct Tree * createNode(int data) {
     struct Tree *temp;
     temp = (struct Tree *) malloc(sizeof(struct Tree));
@@ -86,74 +81,4 @@ void numberOfNodes(struct Tree **tree, int *nodes) {
         numberOfNodes(&(*tree)->left, nodes);
         numberOfNodes(&(*tree)->rigth, nodes);
     }
-}
-
-int main() {
-    struct Tree *tree;
-    tree = NULL;
-
-    int *results;
-    results = (int *) malloc(sizeof(int));
-    *results = 0;
-
-    int *nodes;
-    nodes = (int *) malloc(sizeof(int));
-    *nodes = 0;
-    
-
-    insert(&tree, 10);
-    insert(&tree, 5);
-    insert(&tree, 3);
-    insert(&tree, 15);
-    insert(&tree, 30);
-    insert(&tree, 25);
-    insert(&tree, 2);
-
-
-    /* 
-
-    -------  PESQUISA ------
-
-    int valor_encontrado = search(&tree, 15);
-
-    */
-
-
-    
-    /*
-
-    -------  SOMA TOTAL ------
-
-    total(&tree, results);
-    printf("%i\n", *results);
-
-    */
-
-
-
-    /*
-
-    ------- ALGUNS OUTPUTS ------
-
-    printf("%i\n", tree->data);
-    printf("%i\n", tree->left->data);
-    printf("%i\n", tree->left->left->data);
-    printf("%i\n", tree->rigth->data);
-    printf("%i\n", tree->rigth->rigth->data);
-    printf("%i\n", tree->rigth->rigth->left->data);
-
-    */
-
-
-
-    /*
-
-    -------  NUMERO DE NÓS DE UMA ÁRVORE BINÁRIA ------
-
-    numberOfNodes(&tree, nodes);
-    printf("%i\n", *nodes);
-
-    */
-
-    return 0;
 }
