@@ -110,9 +110,8 @@ int main() {
     insert(&tree, 2);
 
 
-
-
     /* 
+
     -------  PESQUISA ------
 
     int valor_encontrado = search(&tree, 15);
@@ -120,33 +119,40 @@ int main() {
     */
 
 
-
     
     /*
+
     -------  SOMA TOTAL ------
 
     total(&tree, results);
     printf("%i\n", *results);
+
     */
 
 
 
     /*
+
+    ------- ALGUNS OUTPUTS ------
+
     printf("%i\n", tree->data);
     printf("%i\n", tree->left->data);
     printf("%i\n", tree->left->left->data);
     printf("%i\n", tree->rigth->data);
     printf("%i\n", tree->rigth->rigth->data);
     printf("%i\n", tree->rigth->rigth->left->data);
+
     */
 
 
 
     /*
-    -------  NUMERO DE NÓS ------
+
+    -------  NUMERO DE NÓS DE UMA ÁRVORE BINÁRIA ------
 
     numberOfNodes(&tree, nodes);
     printf("%i\n", *nodes);
+
     */
 
     return 0;
