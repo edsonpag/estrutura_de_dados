@@ -1,12 +1,12 @@
 struct Tree * createNode(int data) {
-    struct Tree *temp;
-    temp = (struct Tree *) malloc(sizeof(struct Tree));
+    struct Tree *node;
+    node = (struct Tree *) malloc(sizeof(struct Tree));
 
-    temp->data = data;
-    temp->left = NULL;
-    temp->rigth = NULL;
+    node->data = data;
+    node->left = NULL;
+    node->rigth = NULL;
 
-    return temp;
+    return node;
 }
 
 void insert(struct Tree **tree, int data) {
