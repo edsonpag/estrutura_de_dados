@@ -57,7 +57,7 @@ void menu(struct Tree *tree) {
 
         case 3:
             system("clear");
-            total(&tree, totalAmount);
+            total(tree, totalAmount);
             printf("%i\n", *totalAmount);
             free(totalAmount);
             menu(tree);
@@ -65,7 +65,7 @@ void menu(struct Tree *tree) {
 
         case 4:
             system("clear");
-            numberOfNodes(&tree, nodes);
+            numberOfNodes(tree, nodes);
             printf("A árvore tem %i nós\n", *nodes);
             free(nodes);
             menu(tree);

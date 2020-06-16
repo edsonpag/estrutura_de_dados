@@ -59,26 +59,26 @@ int search(struct Tree **tree, int data) {
     
 }
 
-void total(struct Tree **tree, int *results) {
+void total(struct Tree *tree, int *results) {
     
-    if(*tree == NULL) {
+    if(tree == NULL) {
         return;
     } else {
 
-        *results += (*tree)->data;
+        *results += tree->data;
 
-        total(&(*tree)->left, results);
-        total(&(*tree)->rigth, results);
+        total(tree->left, results);
+        total(tree->rigth, results);
     }
 
 }
 
-void numberOfNodes(struct Tree **tree, int *nodes) {
-    if(*tree == NULL) {
+void numberOfNodes(struct Tree *tree, int *nodes) {
+    if(tree == NULL) {
         return;
     } else {
         *nodes += 1;
-        numberOfNodes(&(*tree)->left, nodes);
-        numberOfNodes(&(*tree)->rigth, nodes);
+        numberOfNodes(tree->left, nodes);
+        numberOfNodes(tree->rigth, nodes);
     }
 }
