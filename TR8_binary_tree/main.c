@@ -49,9 +49,9 @@ void menu(struct Tree *tree) {
             system("clear");
             printf("Digite o valor a ser procurado: \n");
             searchFor = read_integer();
-            valueFound = search(&tree, searchFor);
+            valueFound = search(tree, searchFor);
             system("clear");
-            printf("---- Valor %i foi encontrado\n", valueFound);
+            valueFound == -1 ? printf("---- Valor não foi encontrado\n") : printf("---- Valor %i foi encontrado\n", valueFound);
             menu(tree);
             break;
 

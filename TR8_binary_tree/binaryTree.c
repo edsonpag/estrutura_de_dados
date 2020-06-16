@@ -42,19 +42,18 @@ void insertNode(struct Tree **tree, int data) {
 }
 
 
-int search(struct Tree **tree, int data) {
-    if((*tree) == NULL) {
-        printf("Não encontrado\n");
+int search(struct Tree *tree, int data) {
+    if(tree == NULL) {
         return -1;
     }
 
-    if((*tree)->data == data) {
-        printf("%i\n", (*tree)->data);
-        return (*tree)->data;
-    } else if(data < (*tree)->data ) {
-        search(&(*tree)->left, data);
+    if(tree->data == data) {
+        printf("%i\n", tree->data);
+        return tree->data;
+    } else if(data < tree->data) {
+        search(tree->left, data);
     } else {
-        search(&(*tree)->rigth, data);
+        search(tree->rigth, data);
     }
     
 }
