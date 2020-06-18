@@ -30,7 +30,7 @@ void insertNode(struct Tree **tree, int data) {
 
     } else {
 
-        if((*tree)->rigth == NULL)  {
+        if((*tree)->rigth == NULL) {
 
             (*tree)->rigth = createNode(data);
         } else {
@@ -58,16 +58,16 @@ int search(struct Tree *tree, int data) {
     
 }
 
-void total(struct Tree *tree, int *results) {
+void total(struct Tree *tree, int *totalAmount) {
     
     if(tree == NULL) {
         return;
     } else {
 
-        *results += tree->data;
+        *totalAmount += tree->data;
 
-        total(tree->left, results);
-        total(tree->rigth, results);
+        total(tree->left, totalAmount);
+        total(tree->rigth, totalAmount);
     }
 
 }
